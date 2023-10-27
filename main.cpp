@@ -11,6 +11,7 @@ void myCalculation() {
     double workWeeksPerYears {0};
     double annualSalary {0};
     double monthlySalary {0};
+    const double TAXRATE = 0.05; // 5.0% tax rate;
 
 
     std::cout << "Enter the number of work hours per week: ";
@@ -20,10 +21,14 @@ void myCalculation() {
     std::cout << "Enter the hourly Wage: ";
     std::cin >> hourlyWage;
 
-    annualSalary = (hourlyWage * hoursPerWeek * workWeeksPerYears);
+    double annualBeforeTaxRate = (hourlyWage * hoursPerWeek * workWeeksPerYears);
+    double annualAfterTaxRate = annualBeforeTaxRate * TAXRATE; // 5.0 tax rate
+    annualSalary = annualBeforeTaxRate - annualAfterTaxRate;
     std::cout << "Your annual salary is: " << std::fixed  << annualSalary << std::setprecision(2) << std::endl;
 
-    monthlySalary = annualSalary / 12;
+    double monthlyBeforeTaxRate = annualBeforeTaxRate / 12;
+    double monthlyAfterTaxRate = monthlyBeforeTaxRate * TAXRATE; // 5.0 tax rate
+    monthlySalary = monthlyBeforeTaxRate - monthlyAfterTaxRate;
     std::cout << "Your monthly salary is: " << std::fixed <<  monthlySalary << std::setprecision(2) << std::endl;
 
 
